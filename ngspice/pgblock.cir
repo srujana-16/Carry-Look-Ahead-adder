@@ -1,0 +1,99 @@
+*Propagate and generate block*
+
+.include TSMC_180nm.txt
+
+.param SUPPLY=1.8
+.param LAMBDA=0.09u
+.param width_P={20*LAMBDA}
+.param width_N={10*LAMBDA}
+.global gnd vdd 
+
+vdd vdd gnd 'SUPPLY'
+
+* Inputs
+vin cin gnd pulse (0 1.8 0 0.1n 0.1n 160n 320n)
+* Input A
+vin_a1 a1 gnd pulse (0 1.8 0 0.1n 0.1n 10n 20n) 
+* vin_a2 a2 gnd pulse (0 1.8 0 0.1n 0.1n 20n 40n) 
+* vin_a3 a3 gnd pulse (0 1.8 0 0.1n 0.1n 40n 80n) 
+* vin_a4 a4 gnd pulse (0 1.8 0 0.1n 0.1n 80n 160n) 
+
+* Input B 
+vin_b1 b1 gnd pulse (0 1.8 0 0.1n 0.1n 20n 40n) 
+* vin_b2 b2 gnd pulse (0 1.8 0 0.1n 0.1n 20n 40n) 
+* vin_b3 b3 gnd pulse (0 1.8 0 0.1n 0.1n 40n 80n) 
+* vin_b4 b4 gnd pulse (0 1.8 0 0.1n 0.1n 80n 160n) 
+
+
+* XOR gate 
+.subckt xor_subckt p q y vdd gnd 
+
+* inverter 
+M1 a p vdd vdd CMOSP W={width_P} L={2*LAMBDA} AS={5*width_P*LAMBDA} PS={10*LAMBDA+2*width_P} AD={5*width_P*LAMBDA} PD={10*LAMBDA+2*width_P}
+
+M2 a p gnd gnd CMOSN W={width_N} L={2*LAMBDA} AS={5*width_N*LAMBDA} PS={10*LAMBDA+2*width_N} AD={5*width_N*LAMBDA} PD={10*LAMBDA+2*width_N}
+
+M3 b q vdd vdd CMOSP W={width_P} L={2*LAMBDA} AS={5*width_P*LAMBDA} PS={10*LAMBDA+2*width_P} AD={5*width_P*LAMBDA} PD={10*LAMBDA+2*width_P}
+
+M4 b q gnd gnd CMOSN W={width_N} L={2*LAMBDA} AS={5*width_N*LAMBDA} PS={10*LAMBDA+2*width_N} AD={5*width_N*LAMBDA} PD={10*LAMBDA+2*width_N}
+
+* xor gate 
+M5 r b vdd vdd CMOSP W={width_P} L={2*LAMBDA} AS={5*width_P*LAMBDA} PS={10*LAMBDA+2*width_P} AD={5*width_P*LAMBDA} PD={10*LAMBDA+2*width_P}
+
+M6 y p r r CMOSP W={width_P} L={2*LAMBDA} AS={5*width_P*LAMBDA} PS={10*LAMBDA+2*width_P} AD={5*width_P*LAMBDA} PD={10*LAMBDA+2*width_P}
+
+M7 s q vdd vdd CMOSP W={width_P} L={2*LAMBDA} AS={5*width_P*LAMBDA} PS={10*LAMBDA+2*width_P} AD={5*width_P*LAMBDA} PD={10*LAMBDA+2*width_P}
+
+M8 y a s s CMOSP W={width_P} L={2*LAMBDA} AS={5*width_P*LAMBDA} PS={10*LAMBDA+2*width_P} AD={5*width_P*LAMBDA} PD={10*LAMBDA+2*width_P}
+
+M9 m q y y CMOSN W={width_N} L={2*LAMBDA} AS={5*width_N*LAMBDA} PS={10*LAMBDA+2*width_N} AD={5*width_N*LAMBDA} PD={10*LAMBDA+2*width_N}
+
+M10 gnd p m m CMOSN W={width_N} L={2*LAMBDA} AS={5*width_N*LAMBDA} PS={10*LAMBDA+2*width_N} AD={5*width_N*LAMBDA} PD={10*LAMBDA+2*width_N}
+
+M11 n b y y CMOSN W={width_N} L={2*LAMBDA} AS={5*width_N*LAMBDA} PS={10*LAMBDA+2*width_N} AD={5*width_N*LAMBDA} PD={10*LAMBDA+2*width_N}
+
+M12 gnd a n n CMOSN W={width_N} L={2*LAMBDA} AS={5*width_N*LAMBDA} PS={10*LAMBDA+2*width_N} AD={5*width_N*LAMBDA} PD={10*LAMBDA+2*width_N}
+
+.ends xor_subckt
+
+* AND gate 
+.subckt and_subckt p q y vdd gnd
+
+M1 r p vdd vdd CMOSP W={width_P} L={2*LAMBDA} AS={5*width_P*LAMBDA} PS={10*LAMBDA+2*width_P} AD={5*width_P*LAMBDA} PD={10*LAMBDA+2*width_P}
+
+M2 r q vdd vdd CMOSP W={width_P} L={2*LAMBDA} AS={5*width_P*LAMBDA} PS={10*LAMBDA+2*width_P} AD={5*width_P*LAMBDA} PD={10*LAMBDA+2*width_P}
+
+M3 r q s s CMOSN W={width_N} L={2*LAMBDA} AS={5*width_N*LAMBDA} PS={10*LAMBDA+2*width_N} AD={5*width_N*LAMBDA} PD={10*LAMBDA+2*width_N}
+
+M4 s p gnd gnd CMOSN W={width_N} L={2*LAMBDA} AS={5*width_N*LAMBDA} PS={10*LAMBDA+2*width_N} AD={5*width_N*LAMBDA} PD={10*LAMBDA+2*width_N}
+
+M5 y r vdd vdd CMOSP W={width_P} L={2*LAMBDA} AS={5*width_P*LAMBDA} PS={10*LAMBDA+2*width_P} AD={5*width_P*LAMBDA} PD={10*LAMBDA+2*width_P}
+
+M6 y r gnd gnd CMOSN W={width_N} L={2*LAMBDA} AS={5*width_N*LAMBDA} PS={10*LAMBDA+2*width_N} AD={5*width_N*LAMBDA} PD={10*LAMBDA+2*width_N}
+
+.ends
+
+* Propagate and generate 
+xx1 a1 b1 p1 vdd gnd xor_subckt 
+xa1 a1 b1 g1 vdd gnd and_subckt
+
+* xx2 a2 b2 p2 vdd gnd xor_subckt 
+* xa2 a2 b2 g2 vdd gnd and_subckt
+
+* xx3 a3 b3 p3 vdd gnd xor_subckt 
+* xa3 a3 b3 g3 vdd gnd and_subckt
+
+* xx4 a4 b4 p4 vdd gnd xor_subckt 
+* xa4 a4 b4 g4 vdd gnd and_subckt
+
+* Output
+.control 
+tran 1n 200n 
+run 
+plot v(p1) v(g1)+2 v(a1)+4 v(b1)+6
+* plot v(p2) v(g2)
+* plot v(p3) v(g3)
+* plot v(p4) v(g4)
+set curplottitle= "Srujana Vanka - 2020102005 - PGblock"
+.endc
+.end

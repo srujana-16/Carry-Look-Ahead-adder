@@ -1,0 +1,26 @@
+*FIVE INVERTER RING OSCILLATOR*
+* using not gate subcircuit
+.include inverter.sub
+
+vin1 c gnd pulse (0 5 0 0.1n 0.1n 10n 20n) 
+
+xN1 p p1 inverter
+xN2 p1 p2 inverter
+xN3 p2 p3 inverter
+xN4 p3 p4 inverter
+xN5 p4 p inverter
+
+.tran 1n 120n
+
+.measure tran trise
++ TRIG v(p) VAL = 0.9V RISE=1
++ TARG v(p) VAL = 0.9V RISE=2
+
+.control 
+tran 1n 80n 
+run 
+plot v(p)
+.endc
+.end
+
+

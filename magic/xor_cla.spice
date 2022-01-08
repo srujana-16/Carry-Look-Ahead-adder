@@ -1,0 +1,37 @@
+* SPICE3 file created from xor_cla.ext - technology: scmos
+
+.option scale=1u
+
+M1000 vdd a_25_n47# a_6_19# w_n72_13# pfet w=19 l=4
++  ad=741 pd=154 as=361 ps=76
+M1001 a_n61_n43# a_25_n47# gnd Gnd nfet w=12 l=4
++  ad=768 pd=200 as=228 ps=62
+M1002 a_n40_n43# a_n22_n46# a_n40_19# w_n72_13# pfet w=19 l=4
++  ad=380 pd=78 as=342 ps=74
+M1003 a_n40_19# a_n49_n11# vdd w_n72_13# pfet w=19 l=4
++  ad=0 pd=0 as=0 ps=0
+M1004 a_6_19# a_2_n49# a_n40_n43# w_n72_13# pfet w=19 l=4
++  ad=0 pd=0 as=0 ps=0
+M1005 a_n61_n43# a_n22_n46# a_n40_n43# Gnd nfet w=12 l=4
++  ad=0 pd=0 as=216 ps=60
+M1006 gnd a_2_n49# a_n61_n43# Gnd nfet w=12 l=4
++  ad=0 pd=0 as=0 ps=0
+M1007 a_n40_n43# a_n49_n11# a_n61_n43# Gnd nfet w=12 l=4
++  ad=0 pd=0 as=0 ps=0
+C0 vdd w_n72_13# 4.51fF
+C1 a_25_n47# w_n72_13# 4.43fF
+C2 a_2_n49# w_n72_13# 4.43fF
+C3 a_n22_n46# w_n72_13# 4.43fF
+C4 a_n49_n11# w_n72_13# 4.43fF
+C5 a_n40_n43# a_25_n47# 1.08fF
+C6 a_n40_n43# a_2_n49# 1.08fF
+C7 a_n40_n43# a_n22_n46# 1.08fF
+C8 a_n40_n43# w_n72_13# 2.26fF
+C9 gnd Gnd 13.96fF
+C10 a_n61_n43# Gnd 78.16fF
+C11 a_n40_n43# Gnd 55.08fF
+C12 vdd Gnd 55.04fF
+C13 a_25_n47# Gnd 18.93fF
+C14 a_2_n49# Gnd 19.88fF
+C15 a_n22_n46# Gnd 18.61fF
+C16 a_n49_n11# Gnd 18.30fF

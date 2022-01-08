@@ -1,0 +1,50 @@
+* SPICE3 file created from or_gate.ext - technology: scmos
+
+.include TSMC_180nm.txt
+
+.param SUPPLY=1.8
+.param LAMBDA=0.09u
+.param width_P={20*LAMBDA}
+.param width_N={10*LAMBDA}
+.global gnd vdd 
+
+vdd vdd gnd 'SUPPLY'
+
+vin1 p gnd pulse (0 1.8 0 0.1n 0.1n 10n 20n) 
+vin2 q gnd pulse (0 1.8 0 0.1n 0.1n 20n 40n) 
+
+.option scale=0.09u
+
+M1000 y a_n6_n54# gnd Gnd CMOSN w=16 l=3
++  ad=464 pd=90 as=1056 ps=228
+M1001 a_n6_n54# q a_n6_14# w_n27_6# CMOSP w=9 l=3
++  ad=144 pd=50 as=117 ps=44
+M1002 a_n6_n54# p gnd Gnd CMOSN w=16 l=3
++  ad=208 pd=58 as=0 ps=0
+M1003 gnd q a_n6_n54# Gnd CMOSN w=16 l=3
++  ad=0 pd=0 as=0 ps=0
+M1004 a_n6_14# p vdd w_n27_6# CMOSP w=9 l=3
++  ad=0 pd=0 as=324 ps=108
+M1005 y a_n6_n54# vdd w_41_7# CMOSP w=9 l=3
++  ad=243 pd=72 as=0 ps=0
+
+.tran 1n 120n
+
+.measure tran trise
++ TRIG v(p) VAL = 0.9V RISE=1
++ TARG v(y) VAL = 0.9V RISE=1
+
+.measure tran tfall
++ TRIG v(p) VAL = 0.9V FALL=1
++ TARG v(y) VAL = 0.9V FALL=1
+
+.measure tran tpd param = '(trise + tfall)/2' goal=0
+
+.control 
+tran 1n 80n 
+run 
+plot v(y)
+plot v(p)
+plot v(q)
+.endc
+.end

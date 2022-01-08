@@ -1,0 +1,52 @@
+* SPICE3 file created from and4.ext - technology: scmos
+
+.option scale=0.09u
+
+M1000 not_cla_0/a_3_n37# not_cla_0/a_0_n40# not_cla_0/vdd not_cla_0/w_n20_n1# pfet w=9 l=3
++  ad=135 pd=48 as=117 ps=44
+M1001 not_cla_0/a_3_n37# not_cla_0/a_0_n40# not_cla_0/gnd Gnd nfet w=9 l=3
++  ad=225 pd=68 as=198 ps=62
+M1002 a_n41_28# a_44_n65# a_16_n59# Gnd nfet w=13 l=3
++  ad=325 pd=76 as=364 ps=82
+M1003 a_n41_n59# a_n44_n66# gnd Gnd nfet w=13 l=3
++  ad=299 pd=72 as=286 ps=70
+M1004 vdd a_44_n65# a_n41_28# w_n67_17# pfet w=11 l=3
++  ad=616 pd=178 as=561 ps=146
+M1005 a_16_n59# a_13_n64# a_n15_n59# Gnd nfet w=13 l=3
++  ad=0 pd=0 as=364 ps=82
+M1006 a_n41_28# a_n44_n66# vdd w_n67_17# pfet w=11 l=3
++  ad=0 pd=0 as=0 ps=0
+M1007 a_n41_28# a_13_n64# vdd w_n67_17# pfet w=11 l=3
++  ad=0 pd=0 as=0 ps=0
+M1008 vdd a_n18_n64# a_n41_28# w_n67_17# pfet w=11 l=3
++  ad=0 pd=0 as=0 ps=0
+M1009 a_n15_n59# a_n18_n64# a_n41_n59# Gnd nfet w=13 l=3
++  ad=0 pd=0 as=0 ps=0
+C0 not_cla_0/a_3_n37# not_cla_0/vdd 0.06fF
+C1 vdd w_n67_17# 0.13fF
+C2 a_44_n65# w_n67_17# 0.14fF
+C3 not_cla_0/a_3_n37# not_cla_0/w_n20_n1# 0.05fF
+C4 not_cla_0/vdd not_cla_0/a_0_n40# 0.08fF
+C5 a_13_n64# w_n67_17# 0.14fF
+C6 not_cla_0/vdd not_cla_0/w_n20_n1# 0.08fF
+C7 a_n18_n64# w_n67_17# 0.14fF
+C8 not_cla_0/a_0_n40# not_cla_0/w_n20_n1# 0.09fF
+C9 a_n44_n66# w_n67_17# 0.14fF
+C10 a_n41_28# a_44_n65# 0.16fF
+C11 a_n41_28# a_13_n64# 0.16fF
+C12 a_n41_28# a_n18_n64# 0.16fF
+C13 not_cla_0/gnd not_cla_0/a_3_n37# 0.09fF
+C14 a_n41_28# w_n67_17# 0.12fF
+C15 gnd Gnd 0.60fF
+C16 a_n41_28# Gnd 0.79fF
+C17 vdd Gnd 0.65fF
+C18 a_44_n65# Gnd 0.52fF
+C19 a_13_n64# Gnd 0.50fF
+C20 a_n18_n64# Gnd 0.50fF
+C21 a_n44_n66# Gnd 0.52fF
+C22 w_n67_17# Gnd 4.31fF
+C23 not_cla_0/gnd Gnd 0.20fF
+C24 not_cla_0/a_3_n37# Gnd 0.14fF
+C25 not_cla_0/vdd Gnd 0.12fF
+C26 not_cla_0/a_0_n40# Gnd 0.26fF
+C27 not_cla_0/w_n20_n1# Gnd 0.93fF

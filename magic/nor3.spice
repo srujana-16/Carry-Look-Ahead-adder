@@ -1,0 +1,47 @@
+* SPICE3 file created from nor3.ext - technology: scmos
+
+.option scale=0.09u
+
+M1000 not_cla_0/a_3_n37# not_cla_0/a_0_n40# not_cla_0/vdd not_cla_0/w_n20_n1# pfet w=9 l=3
++  ad=135 pd=48 as=117 ps=44
+M1001 not_cla_0/a_3_n37# not_cla_0/a_0_n40# not_cla_0/gnd Gnd nfet w=9 l=3
++  ad=225 pd=68 as=198 ps=62
+M1002 a_n21_n50# a_n24_n53# gnd Gnd nfet w=8 l=3
++  ad=320 pd=112 as=192 ps=80
+M1003 gnd a_n10_n55# a_n21_n50# Gnd nfet w=8 l=3
++  ad=0 pd=0 as=0 ps=0
+M1004 a_n21_n50# a_5_n54# a_n7_n5# w_n39_n12# pfet w=9 l=3
++  ad=99 pd=40 as=108 ps=42
+M1005 a_n7_n5# a_n10_n55# a_n21_n5# w_n39_n12# pfet w=9 l=3
++  ad=0 pd=0 as=99 ps=40
+M1006 a_n21_n5# a_n24_n53# vdd w_n39_n12# pfet w=9 l=3
++  ad=0 pd=0 as=81 ps=36
+M1007 a_n21_n50# a_5_n54# gnd Gnd nfet w=8 l=3
++  ad=0 pd=0 as=0 ps=0
+C0 a_n21_n50# a_n10_n55# 0.13fF
+C1 vdd w_n39_n12# 0.20fF
+C2 not_cla_0/a_0_n40# not_cla_0/w_n20_n1# 0.09fF
+C3 a_5_n54# w_n39_n12# 0.09fF
+C4 a_n21_n50# w_n39_n12# 0.04fF
+C5 a_n10_n55# w_n39_n12# 0.09fF
+C6 not_cla_0/vdd not_cla_0/w_n20_n1# 0.08fF
+C7 a_n24_n53# w_n39_n12# 0.09fF
+C8 not_cla_0/vdd not_cla_0/a_0_n40# 0.08fF
+C9 not_cla_0/a_3_n37# not_cla_0/w_n20_n1# 0.05fF
+C10 not_cla_0/gnd not_cla_0/a_3_n37# 0.09fF
+C11 a_n21_n50# vdd 0.07fF
+C12 gnd a_n21_n50# 0.16fF
+C13 not_cla_0/vdd not_cla_0/a_3_n37# 0.06fF
+C14 a_n21_n50# a_5_n54# 0.13fF
+C15 gnd Gnd 0.39fF
+C16 a_n21_n50# Gnd 0.27fF
+C17 vdd Gnd 0.00fF
+C18 a_5_n54# Gnd 0.24fF
+C19 a_n10_n55# Gnd 0.25fF
+C20 a_n24_n53# Gnd 0.24fF
+C21 w_n39_n12# Gnd 1.70fF
+C22 not_cla_0/gnd Gnd 0.20fF
+C23 not_cla_0/a_3_n37# Gnd 0.14fF
+C24 not_cla_0/vdd Gnd 0.12fF
+C25 not_cla_0/a_0_n40# Gnd 0.26fF
+C26 not_cla_0/w_n20_n1# Gnd 0.93fF

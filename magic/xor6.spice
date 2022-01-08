@@ -1,0 +1,57 @@
+* SPICE3 file created from xor6.ext - technology: scmos
+
+.include TSMC_180nm.txt
+
+.param SUPPLY=1.8
+.param LAMBDA=0.09u
+.param width_P={20*LAMBDA}
+.param width_N={10*LAMBDA}
+.global gnd vdd 
+
+vdd vdd gnd 'SUPPLY'
+
+vin1 p gnd pulse (0 1.8 0 0.1n 0.1n 10n 20n) 
+vin2 q gnd pulse (0 1.8 0 0.1n 0.1n 20n 40n) 
+vin3 p1 gnd pulse (0 1.8 0 0.1n 0.1n 5n 10n)
+vin4 q1 gnd pulse (0 1.8 0 0.1n 0.1n 10n 20n)
+
+.option scale=0.09u
+
+M1000 vdd q a_6_19# w_n72_13# CMOSP w=19 l=4
++  ad=741 pd=154 as=361 ps=76
+M1001 a_n61_n43# q gnd Gnd CMOSN w=12 l=4
++  ad=768 pd=200 as=228 ps=62
+M1002 y q1 a_n40_19# w_n72_13# CMOSP w=19 l=4
++  ad=380 pd=78 as=342 ps=74
+M1003 a_n40_19# p vdd w_n72_13# CMOSP w=19 l=4
++  ad=0 pd=0 as=0 ps=0
+M1004 a_6_19# p1 y w_n72_13# CMOSP w=19 l=4
++  ad=0 pd=0 as=0 ps=0
+M1005 a_n61_n43# q1 y Gnd CMOSN w=12 l=4
++  ad=0 pd=0 as=216 ps=60
+M1006 gnd p1 a_n61_n43# Gnd CMOSN w=12 l=4
++  ad=0 pd=0 as=0 ps=0
+M1007 y p a_n61_n43# Gnd CMOSN w=12 l=4
++  ad=0 pd=0 as=0 ps=0
+C0 w_n72_13# Gnd 4.05fF
+
+.tran 1n 120n
+
+.measure tran trise
++ TRIG v(p) VAL = 0.9V RISE=1
++ TARG v(y) VAL = 0.9V RISE=1
+
+.measure tran tfall
++ TRIG v(p) VAL = 0.9V FALL=1
++ TARG v(y) VAL = 0.9V FALL=1
+
+.measure tran tpd param = '(trise + tfall)/2' goal=0
+
+.control 
+tran 1n 80n 
+run 
+plot v(p)
+plot v(q)
+plot v(y)
+.endc
+.end

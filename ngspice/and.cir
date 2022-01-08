@@ -1,0 +1,48 @@
+*CMOS AND gate*
+
+.include TSMC_180nm.txt
+
+.param SUPPLY=1.8
+.param LAMBDA=0.09u
+.param width_P={20*LAMBDA}
+.param width_N={10*LAMBDA}
+.global gnd vdd 
+
+vdd vdd gnd 'SUPPLY'
+
+* inputs
+vin1 p gnd pulse (0 1.8 0 0.1n 0.1n 10n 20n) 
+vin2 q gnd pulse (0 1.8 0 0.1n 0.1n 20n 40n) 
+
+M1 r p vdd vdd CMOSP W={width_P} L={2*LAMBDA} AS={5*width_P*LAMBDA} PS={10*LAMBDA+2*width_P} AD={5*width_P*LAMBDA} PD={10*LAMBDA+2*width_P}
+
+M2 r q vdd vdd CMOSP W={width_P} L={2*LAMBDA} AS={5*width_P*LAMBDA} PS={10*LAMBDA+2*width_P} AD={5*width_P*LAMBDA} PD={10*LAMBDA+2*width_P}
+
+M3 r q s s CMOSN W={width_N} L={2*LAMBDA} AS={5*width_N*LAMBDA} PS={10*LAMBDA+2*width_N} AD={5*width_N*LAMBDA} PD={10*LAMBDA+2*width_N}
+
+M4 s p gnd gnd CMOSN W={width_N} L={2*LAMBDA} AS={5*width_N*LAMBDA} PS={10*LAMBDA+2*width_N} AD={5*width_N*LAMBDA} PD={10*LAMBDA+2*width_N}
+
+M5 y r vdd vdd CMOSP W={width_P} L={2*LAMBDA} AS={5*width_P*LAMBDA} PS={10*LAMBDA+2*width_P} AD={5*width_P*LAMBDA} PD={10*LAMBDA+2*width_P}
+
+M6 y r gnd gnd CMOSN W={width_N} L={2*LAMBDA} AS={5*width_N*LAMBDA} PS={10*LAMBDA+2*width_N} AD={5*width_N*LAMBDA} PD={10*LAMBDA+2*width_N}
+
+* delays
+.tran 1n 120n
+
+.measure tran trise
++ TRIG v(p) VAL = 0.9V RISE=1
++ TARG v(y) VAL = 0.9V RISE=1
+
+.measure tran tfall
++ TRIG v(p) VAL = 0.9V FALL=1
++ TARG v(y) VAL = 0.9V FALL=1
+
+.measure tran tpd param = '(trise + tfall)/2' goal=0
+
+* outputs
+.control 
+tran 1n 80n 
+run 
+plot v(y) v(p)+2 v(q)+4
+.endc
+.end

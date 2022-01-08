@@ -1,0 +1,30 @@
+* SPICE3 file created from or_cla.ext - technology: scmos
+
+.option scale=1u
+
+M1000 a_74_n55# a_n6_n54# gnd Gnd nfet w=16 l=3
++  ad=464 pd=90 as=1056 ps=228
+M1001 a_n6_n54# a_4_n4# a_n6_14# w_n27_6# pfet w=9 l=3
++  ad=144 pd=50 as=117 ps=44
+M1002 a_n6_n54# a_n12_n5# gnd Gnd nfet w=16 l=3
++  ad=208 pd=58 as=0 ps=0
+M1003 gnd a_4_n4# a_n6_n54# Gnd nfet w=16 l=3
++  ad=0 pd=0 as=0 ps=0
+M1004 a_n6_14# a_n12_n5# vdd w_n27_6# pfet w=9 l=3
++  ad=0 pd=0 as=324 ps=108
+M1005 a_74_n55# a_n6_n54# vdd w_41_7# pfet w=9 l=3
++  ad=243 pd=72 as=0 ps=0
+C0 w_n27_6# a_n6_n54# 3.01fF
+C1 w_41_7# a_n6_n54# 4.36fF
+C2 w_n27_6# a_n12_n5# 4.63fF
+C3 a_4_n4# w_n27_6# 4.63fF
+C4 w_n27_6# vdd 2.63fF
+C5 a_4_n4# a_n6_n54# 0.81fF
+C6 w_41_7# a_74_n55# 2.63fF
+C7 w_41_7# vdd 2.63fF
+C8 gnd Gnd 60.82fF
+C9 a_74_n55# Gnd 25.57fF
+C10 vdd Gnd 38.35fF
+C11 a_n6_n54# Gnd 62.40fF
+C12 a_4_n4# Gnd 17.96fF
+C13 a_n12_n5# Gnd 18.24fF

@@ -1,0 +1,37 @@
+magic
+tech scmos
+timestamp 1638803146
+use xor_cla  xor_cla_0
+timestamp 1638788837
+transform 1 0 77 0 1 85
+box -81 -80 69 57
+use xor_cla  xor_cla_1
+timestamp 1638788837
+transform 1 0 80 0 1 -88
+box -81 -80 69 57
+use xor_cla  xor_cla_2
+timestamp 1638788837
+transform 1 0 82 0 1 -261
+box -81 -80 69 57
+use xor_cla  xor_cla_3
+timestamp 1638788837
+transform 1 0 84 0 1 -442
+box -81 -80 69 57
+<< labels >>
+rlabel space 28 74 37 81 1 p1
+rlabel space 55 74 64 81 1 cin1
+rlabel space 79 74 88 81 1 p11
+rlabel space 102 74 111 81 1 cin
+rlabel space 31 -99 40 -92 1 p2
+rlabel space 105 -99 114 -92 1 c2
+rlabel space 58 -99 67 -92 1 c21
+rlabel space 82 -99 91 -92 1 p21
+rlabel space 33 -272 42 -265 1 p3
+rlabel space 84 -272 93 -265 1 p31
+rlabel space 60 -272 69 -265 1 c31
+rlabel space 107 -272 116 -265 1 c3
+rlabel space 35 -453 44 -446 1 p4
+rlabel space 62 -453 71 -446 1 c41
+rlabel space 86 -453 95 -446 1 p41
+rlabel space 109 -453 118 -446 1 c4
+<< end >>

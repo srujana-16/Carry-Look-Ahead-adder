@@ -1,0 +1,45 @@
+* SPICE3 file created from exor.ext - technology: scmos
+*CMOS EXOR gate*
+
+.include TSMC_180nm.txt
+
+.param SUPPLY=1.8
+.param LAMBDA=0.09u
+.param width_P={20*LAMBDA}
+.param width_N={10*LAMBDA}
+.global gnd vdd 
+
+vdd vdd gnd 'SUPPLY'
+.option scale=0.09u
+
+** SOURCE/DRAIN TIED
+M1000 va a_n110_n42# va w_n99_29# CMOSP w=15 l=3
++  ad=1005 pd=224 as=0 ps=0
+M1001 va vbb gnd w_n99_29# CMOSP w=15 l=3
++  ad=0 pd=0 as=510 ps=128
+** SOURCE/DRAIN TIED
+M1002 gnd va gnd Gnd CMOSN w=11 l=3
++  ad=968 pd=264 as=0 ps=0
+** SOURCE/DRAIN TIED
+M1003 va vbb va Gnd CMOSN w=11 l=3
++  ad=770 pd=206 as=0 ps=0
+M1004 gnd va vdd w_n99_29# CMOSP w=15 l=3
++  ad=0 pd=0 as=705 ps=154
+M1005 vbb a_n110_n42# gnd Gnd CMOSN w=11 l=3
++  ad=308 pd=78 as=0 ps=0
+M1006 vbb a_n110_n42# vdd w_n99_29# CMOSP w=15 l=3
++  ad=300 pd=70 as=0 ps=0
+M1007 va a_n110_n42# gnd Gnd CMOSN w=11 l=3
++  ad=0 pd=0 as=0 ps=0
+C0 vbb Gnd 2.77fF
+C1 a_n110_n42# Gnd 4.48fF
+C2 w_n99_29# Gnd 5.96fF
+
+.control 
+tran 1n 80n 
+run 
+plot v(va)
+plot v(vbb)
+
+.endc
+.end

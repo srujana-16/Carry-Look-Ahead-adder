@@ -1,0 +1,110 @@
+magic
+tech scmos
+timestamp 1638799888
+<< metal1 >>
+rect -424 146 -326 147
+rect -425 138 -326 146
+rect -425 -40 -408 138
+rect -265 137 -125 146
+rect -65 136 11 145
+rect 122 136 198 145
+rect -356 79 -348 87
+rect -425 -49 -324 -40
+rect -235 -49 -162 -41
+rect -34 -47 39 -39
+rect 154 -46 227 -38
+rect -224 -156 -210 -149
+rect -202 -156 -94 -149
+rect -24 -155 108 -147
+rect 161 -154 303 -146
+rect -224 -157 -94 -156
+<< m2contact >>
+rect -279 28 -272 35
+rect -79 26 -71 34
+rect 109 26 117 34
+rect 304 25 312 33
+rect -210 -156 -202 -148
+<< metal2 >>
+rect -279 -13 -272 28
+rect -71 26 -70 34
+rect -79 -12 -70 26
+rect 117 26 118 34
+rect 109 -12 118 26
+rect 312 25 313 33
+rect 304 -12 313 25
+rect -210 -13 313 -12
+rect -279 -22 313 -13
+rect -279 -23 -200 -22
+rect -79 -23 -70 -22
+rect 109 -23 118 -22
+rect -211 -143 -200 -23
+rect 304 -24 313 -22
+rect -210 -148 -201 -143
+rect -202 -156 -201 -148
+rect -210 -158 -201 -156
+use xor_cla  xor_cla_3
+timestamp 1638788837
+transform 1 0 -307 0 1 90
+box -81 -80 69 57
+use xor_cla  xor_cla_2
+timestamp 1638788837
+transform 1 0 -104 0 1 89
+box -81 -80 69 57
+use xor_cla  xor_cla_0
+timestamp 1638788837
+transform 1 0 82 0 1 88
+box -81 -80 69 57
+use xor_cla  xor_cla_1
+timestamp 1638788837
+transform 1 0 278 0 1 88
+box -81 -80 69 57
+use and_cla  and_cla_0
+timestamp 1638789926
+transform 1 0 -322 0 1 -90
+box -44 -67 108 49
+use and_cla  and_cla_1
+timestamp 1638789926
+transform 1 0 -125 0 1 -88
+box -44 -67 108 49
+use and_cla  and_cla_2
+timestamp 1638789926
+transform 1 0 63 0 1 -87
+box -44 -67 108 49
+use and_cla  and_cla_3
+timestamp 1638789926
+transform 1 0 263 0 1 -88
+box -44 -67 108 49
+<< labels >>
+rlabel space -356 79 -347 86 1 a1
+rlabel space -329 79 -320 86 1 b11
+rlabel space -305 79 -296 86 1 a11
+rlabel space -282 79 -273 86 1 b1
+rlabel space -249 91 -238 100 1 p1
+rlabel space -153 78 -144 85 1 a2
+rlabel space -126 78 -117 85 1 b21
+rlabel space -102 78 -93 85 1 a21
+rlabel space -79 78 -70 85 1 b2
+rlabel space 33 77 42 84 1 a3
+rlabel space 60 77 69 84 1 b31
+rlabel space 84 77 93 84 1 a31
+rlabel space 107 77 116 84 1 b3
+rlabel space 229 77 238 84 1 a4
+rlabel space 256 77 265 84 1 b41
+rlabel space 280 77 289 84 1 a41
+rlabel space 303 77 312 84 1 b4
+rlabel space 139 89 151 98 1 p3
+rlabel space 335 89 347 98 1 p4
+rlabel space -47 90 -35 99 1 p2
+rlabel space -360 -104 -345 -97 1 a1
+rlabel space -339 -106 -324 -99 1 b1
+rlabel space -163 -102 -148 -95 1 a2
+rlabel space -142 -104 -127 -97 1 b2
+rlabel space 25 -101 40 -94 1 a3
+rlabel space 46 -103 61 -96 1 b3
+rlabel space 225 -102 240 -95 1 a4
+rlabel space 246 -104 261 -97 1 b4
+rlabel space -235 -97 -235 -97 1 g1
+rlabel space -38 -96 -38 -96 1 g2
+rlabel space 151 -95 151 -95 1 g3
+rlabel space 351 -96 351 -96 1 g4
+<< end >>

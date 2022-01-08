@@ -1,0 +1,28 @@
+* SPICE3 file created from nand.ext - technology: scmos
+
+.option scale=0.09u
+
+M1000 a_n18_0# a_12_n54# vdd w_n39_n8# pfet w=14 l=3
++  ad=336 pd=104 as=350 ps=106
+M1001 a_n18_0# a_n21_n54# vdd w_n39_n8# pfet w=14 l=3
++  ad=0 pd=0 as=0 ps=0
+M1002 vdd a_n6_n54# a_n18_0# w_n39_n8# pfet w=14 l=3
++  ad=0 pd=0 as=0 ps=0
+M1003 a_n18_n51# a_n21_n54# gnd Gnd nfet w=9 l=3
++  ad=108 pd=42 as=180 ps=58
+M1004 a_n3_n51# a_n6_n54# a_n18_n51# Gnd nfet w=9 l=3
++  ad=135 pd=48 as=0 ps=0
+M1005 a_n18_0# a_12_n54# a_n3_n51# Gnd nfet w=9 l=3
++  ad=243 pd=72 as=0 ps=0
+C0 a_n18_0# a_12_n54# 0.09fF
+C1 a_n6_n54# w_n39_n8# 0.15fF
+C2 w_n39_n8# a_n21_n54# 0.15fF
+C3 vdd a_12_n54# 0.09fF
+C4 a_n18_0# a_n6_n54# 0.09fF
+C5 vdd a_n6_n54# 0.09fF
+C6 vdd a_n21_n54# 0.09fF
+C7 gnd a_n18_0# 0.05fF
+C8 a_n18_0# w_n39_n8# 0.10fF
+C9 vdd w_n39_n8# 0.27fF
+C10 a_n18_0# vdd 0.11fF
+C11 a_12_n54# w_n39_n8# 0.15fF

@@ -1,0 +1,130 @@
+*Netlist for integrated circuit
+.include TSMC_180nm.txt
+.include not.sub
+.include xor.sub
+.include and.sub
+.include or.sub
+.include nand.sub
+.param SUPPLY = 1.8
+.param LAMBDA = 0.09u
+.param w_p = {20*LAMBDA}
+.param w_n = {10*LAMBDA}
+.global gnd vdd 
+Vdd vdd gnd 'SUPPLY'
+
+* a = 1100
+vin1 a0 0 pulse 1.8 0 0ns 100ps 100ps 19.9ns 40ns
+vin2 a1 0 pulse 1.8 0 0ns 100ps 100ps 19.9ns 40ns
+vin3 a2 0 pulse 0 1.8 0ns 100ps 100ps 19.9ns 40ns
+vin4 a3 0 pulse 0 1.8 0ns 100ps 100ps 19.9ns 40ns
+vin5 a0_c 0 pulse 0 1.8 0ns 100ps 100ps 19.9ns 40ns
+vin6 a1_c 0 pulse 0 1.8 0ns 100ps 100ps 19.9ns 40ns
+vin7 a2_c 0 pulse 1.8 0 0ns 100ps 100ps 19.9ns 40ns
+vin8 a3_c 0 pulse 1.8 0 0ns 100ps 100ps 19.9ns 40ns
+* b = 0101
+vin9 b0 0 pulse 0 1.8 0ns 100ps 100ps 19.9ns 40ns
+vin10 b1 0 pulse 1.8 0 0ns 100ps 100ps 19.9ns 40ns
+vin11 b2 0 pulse 0 1.8 0ns 100ps 100ps 19.9ns 40ns
+vin12 b3 0 pulse 1.8 0 0ns 100ps 100ps 19.9ns 40ns
+vin13 b0_c 0 pulse 1.8 0 0ns 100ps 100ps 19.9ns 40ns
+vin14 b1_c 0 pulse 0 1.8 0ns 100ps 100ps 19.9ns 40ns
+vin15 b2_c 0 pulse 1.8 0 0ns 100ps 100ps 19.9ns 40ns
+vin16 b3_c 0 pulse 0 1.8 0ns 100ps 100ps 19.9ns 40ns
+vc  c_in gnd pulse 0 0 0ns 100ps 100ps 9.9ns 10ns
+* Propagate and generate block
+x1 P0 a0 b0 a0_c b0_c vdd gnd xor
+x2 G0 a0 b0 vdd gnd and
+x3 P1 a1 b1 a1_c b1_c vdd gnd xor
+x4 G1 a1 b1 vdd gnd and
+x5 P2 a2 b2 a2_c b2_c vdd gnd xor
+x6 G2 a2 b2 vdd gnd and
+x7 P3 a3 b3 a3_c b3_c vdd gnd xor
+x8 G3 a3 b3 vdd gnd and
+
+.subckt 3_bit_and out a b c vdd gnd
+x9 j1 a b vdd gnd and
+x10 out j1 c vdd gnd and
+.ends 3_bit_and
+
+.subckt 4_bit_and out a b c d vdd gnd
+x11 j1 a b c vdd gnd 3_bit_and
+x12 out j1 d vdd gnd and
+.ends 4_bit_and
+
+.subckt 5_bit_and out a b c d e vdd gnd
+x13 j1 a b c d vdd gnd 4_bit_and
+x14 out j1 e vdd gnd and
+.ends 5_bit_and
+
+.subckt 3_bit_or out a b c vdd gnd
+x15 j1 a b vdd gnd or
+x16 out j1 c vdd gnd or
+.ends 3_bit_or
+
+.subckt 4_bit_or out a b c d vdd gnd
+x17 j1 a b c vdd gnd 3_bit_or
+x18 out j1 d vdd gnd or
+.ends 4_bit_or
+
+.subckt 5_bit_or out a b c d e vdd gnd
+x19 j1 a b c d vdd gnd 4_bit_or
+x20 out j1 e vdd gnd or
+.ends 5_bit_or
+
+* CLA block
+* C1 calculation
+x21 OP0 P0 c_in vdd gnd and
+x22 C1 G0 OP0 vdd gnd or
+* C2 calculation
+x23 temp1 P1 G0 vdd gnd and
+x24 temp2 P1 P0 c_in vdd gnd 3_bit_and
+x25 C2 temp1 temp2 G1 vdd gnd 3_bit_or
+* C3 calculation 
+x26 OP1 P2 G1 vdd gnd and
+x27 OP2 G0 P2 P1 vdd gnd 3_bit_and
+x28 temp4 P2 P1 P0 c_in vdd gnd 4_bit_and
+x29 C3 OP1 OP2 temp4 G2 vdd gnd 4_bit_or
+* c4 calculation
+x30 OP3 P3 P2 P1 P0 c_in vdd gnd 5_bit_and
+x31 OP4 P3 P2 P1 G0 vdd gnd 4_bit_and
+x32 OP5 P3 P2 G1 vdd gnd 3_bit_and
+x33 OP6 P3 G2 vdd gnd and
+x34 C4 OP3 OP4 OP5 OP6 G3 vdd gnd 5_bit_or
+
+* SUM block 
+* S0 calculation
+x35 P0_bar P0 vdd gnd not
+x36 c_in_bar c_in vdd gnd not
+x37 S0 P0 c_in P0_bar c_in_bar vdd gnd xor
+* S1 calculation
+x38 P1_bar P1 vdd gnd not
+x39 C1_bar C1 vdd gnd not
+x40 S1 P1 C1 P1_bar C1_bar vdd gnd xor
+* S2 calculation
+x41 P2_bar P2 vdd gnd not
+x42 C2_bar C2 vdd gnd not
+x43 S2 P2 C2 P2_bar C2_bar vdd gnd xor
+* S3 calculation
+x44 P3_bar P3 vdd gnd not
+x45 C3_bar C3 vdd gnd not
+x46 S3 P3 C3 P3_bar C3_bar vdd gnd xor
+
+.tran 0.1n 200n
+.control
+set color0=black
+set color1=white
+set color2=red 
+set xbrushwidth=3
+run
+set curplottitle= "Shreeya-2020102011-6"
+
+plot v(S0)
+plot v(S1)
+plot v(S2)
+plot v(S3)
+plot v(C4)
+* plot v(P0)
+* plot v(P1)
+* plot v(P2)
+* plot v(P3)
+.endc

@@ -1,0 +1,64 @@
+timestamp 1638799888
+version 8.2
+tech scmos
+style TSMC0.18um(tsmc18)from:t11b
+scale 1000 1 9
+resistclasses 6700 7500 929000 929000 1 7700 7700 80 80 80 70 70 40
+use xor_cla xor_cla_3 1 0 -307 0 1 90
+use xor_cla xor_cla_2 1 0 -104 0 1 89
+use xor_cla xor_cla_0 1 0 82 0 1 88
+use xor_cla xor_cla_1 1 0 278 0 1 88
+use and_cla and_cla_0 1 0 -322 0 1 -90
+use and_cla and_cla_1 1 0 -125 0 1 -88
+use and_cla and_cla_2 1 0 63 0 1 -87
+use and_cla and_cla_3 1 0 263 0 1 -88
+node "m1_161_n154#" 1 659.462 161 -154 m1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1136 300 0 0 0 0 0 0 0 0 0 0
+node "m1_n24_n155#" 1 614.15 -24 -155 m1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1056 280 0 0 0 0 0 0 0 0 0 0
+node "m1_154_n46#" 1 346.81 154 -46 m1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 584 162 0 0 0 0 0 0 0 0 0 0
+node "m1_n34_n47#" 1 346.81 -34 -47 m1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 584 162 0 0 0 0 0 0 0 0 0 0
+node "m1_n235_n49#" 1 346.81 -235 -49 m1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 584 162 0 0 0 0 0 0 0 0 0 0
+node "m1_n279_28#" 10 11641.5 -279 28 v1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1289 402 8990 1854 0 0 0 0 0 0 0 0
+node "m1_n356_79#" 0 52.2816 -356 79 m1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 64 32 0 0 0 0 0 0 0 0 0 0
+node "m1_122_136#" 1 386.416 122 136 m1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 684 170 0 0 0 0 0 0 0 0 0 0
+node "m1_n65_136#" 1 386.416 -65 136 m1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 684 170 0 0 0 0 0 0 0 0 0 0
+node "m1_n265_137#" 1 696.63 -265 137 m1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1260 298 0 0 0 0 0 0 0 0 0 0
+node "m1_n425_n49#" 2 2283.73 -425 -49 m1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 4825 758 0 0 0 0 0 0 0 0 0 0
+cap "m1_n235_n49#" "m1_n279_28#" 217.894
+subcap "m1_n279_28#" -10399.5
+cap "xor_cla_3/gnd" "xor_cla_3/a_n61_n43#" 167.588
+cap "and_cla_0/vdd" "m1_n279_28#" 5.68434e-14
+cap "xor_cla_2/gnd" "xor_cla_2/a_n61_n43#" 180.161
+cap "xor_cla_0/a_n61_n43#" "xor_cla_0/gnd" 197.835
+cap "xor_cla_1/gnd" "xor_cla_1/a_n61_n43#" 180.161
+cap "xor_cla_3/a_n49_n11#" "xor_cla_3/a_n40_n43#" 6.873
+subcap "m1_n265_137#" -529.459
+subcap "m1_n65_136#" -164.061
+subcap "m1_122_136#" -124.016
+subcap "m1_n265_137#" -523.403
+subcap "m1_n65_136#" -254.147
+subcap "m1_122_136#" -232.848
+merge "xor_cla_1/vdd" "xor_cla_0/vdd" -542.604 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -1023 -219 0 0 0 0 0 0 0 0 0 0
+merge "xor_cla_0/vdd" "xor_cla_2/vdd"
+merge "xor_cla_2/vdd" "xor_cla_3/vdd"
+merge "xor_cla_3/vdd" "and_cla_3/vdd"
+merge "and_cla_3/vdd" "and_cla_2/vdd"
+merge "and_cla_2/vdd" "and_cla_1/vdd"
+merge "and_cla_1/vdd" "and_cla_0/vdd"
+merge "and_cla_0/vdd" "m1_n425_n49#"
+merge "m1_n425_n49#" "m1_n235_n49#"
+merge "m1_n235_n49#" "m1_n34_n47#"
+merge "m1_n34_n47#" "m1_154_n46#"
+merge "m1_154_n46#" "m1_n265_137#"
+merge "m1_n265_137#" "m1_n65_136#"
+merge "m1_n65_136#" "m1_122_136#"
+merge "xor_cla_1/gnd" "xor_cla_0/gnd" -4784.77 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -511 -297 -3323 -661 0 0 0 0 0 0 0 0
+merge "xor_cla_0/gnd" "xor_cla_2/gnd"
+merge "xor_cla_2/gnd" "xor_cla_3/gnd"
+merge "xor_cla_3/gnd" "and_cla_3/gnd"
+merge "and_cla_3/gnd" "and_cla_2/gnd"
+merge "and_cla_2/gnd" "and_cla_1/gnd"
+merge "and_cla_1/gnd" "and_cla_0/gnd"
+merge "and_cla_0/gnd" "m1_n279_28#"
+merge "m1_n279_28#" "m1_n24_n155#"
+merge "m1_n24_n155#" "m1_161_n154#"
+merge "xor_cla_3/a_n49_n11#" "m1_n356_79#" -49.7001 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -56 -30 0 0 0 0 0 0 0 0 0 0
